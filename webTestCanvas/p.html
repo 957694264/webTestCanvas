@@ -1,0 +1,127 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta name="description" content="canvas">
+<meta name="keywords" content="canvas">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link rel="Short icon" content="http://www.jq22.com/favicon.ico">
+<link rel="" media="screen">
+<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+</head>
+<style>
+.backg{
+    background:-webkit-linear-gradient(top,#f4511e 0,#d84315 100%);background:linear-gradient(to bottom,#f4511e 0,#d84315 100%);
+    -webkit-transform:scale(0.5);
+    -webkit-transform-origin:top left;
+    -moz-transform:scale(0.5);
+    -moz-transform-origin:top left;
+    -ms-transform:scale(0.5);
+    -ms-transform-origin:top left;
+    -o-transform:scale(0.5);
+    -o-transform-origin:left top;
+    transition:all .7s ease 0s;
+}
+body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, form, fieldset, legend, button, input, textarea, th, td { margin:0; padding:0; }
+body, button, input, select, textarea { font:12px/1.5tahoma, arial, \5b8b\4f53; }
+h1, h2, h3, h4, h5, h6{ font-size:100%; }
+address, cite, dfn, em, var { font-style:normal; }
+code, kbd, pre, samp { font-family:couriernew, courier, monospace; }
+small{ font-size:12px; }
+ul, ol { list-style:none; }
+a { text-decoration:none; }
+a:hover { text-decoration:underline; }
+sup { vertical-align:text-top; }
+sub{ vertical-align:text-bottom; }
+legend { color:#000; }
+fieldset, img { border:0; }
+button, input, select, textarea { font-size:100%; }
+table { border-collapse:collapse; border-spacing:0; }
+body{width: 100%;height: 100%}
+#hao{
+    width: 200px;height:3000px;background: #ccc
+}
+#hao1{
+     width: 200px;height:300px;background: red;padding: 8px;
+     border:8px solid #ccc;
+}
+</style>
+<body>
+<div id="hao" data-name="hello">
+    nihao
+</div>
+<div id="hao1" value="hao">
+    nihao
+</div>
+<input type="button" name="" value="nihao" id="ni" >
+<canvas id="canvas1"></canvas>
+</body>
+<script>
+var l=function(r){
+    var s=r.backingStorePixelRatio||r.webkitBackingStorePixelRatio||r.mozBackingStorePixelRatio||r.msBackingStorePixelRatio||r.oBackingStorePixelRatio||r.backingStorePixelRatio||1;return(window.devicePixelRatio||1)/s
+  };
+var draw=document.getElementById("canvas1");
+var context=draw.getContext("2d");
+var persent=l(context);
+var screenW=window.innerWidth;
+var screenH=window.innerHeight;
+draw.style.width=screenW+"px";
+draw.style.height=screenH+"px";
+
+draw.width=screenW*persent;
+draw.height=screenH*persent;;
+context.beginPath();
+context.lineWidth=5;
+context.strokeStyle="red";
+context.arc(400*persent,400*persent,50*persent,0.37*Math.PI,2.2*Math.PI,false);
+context.stroke();
+context.strokeStyle="red";
+context.lineTo(480*persent,460*persent);
+context.stroke();
+
+
+
+
+
+var arr=new String();
+console.log(typeof(arr))
+console.log(arr instanceof(String));
+var arr1=[1,6,9,45];
+console.log(document.getElementById("hao1").childNodes);
+   var eventUtil={
+    getEvent:function(event){
+      return event?event:window.event;
+    },
+    addEventHander:function(element,hander,type){
+      if(element.addEventListener){
+        element.addEventListener(type,hander,false)
+      }else if(element.attachEvent){
+        element.attachEvent("on"+type,hander)
+      }else{
+        element["on"+type]=hander;
+      }
+    },
+    getTarget:function(event){
+      return event.target?event.target:event.srcElement;
+    }
+  };
+(function(w){
+  var hao=document.getElementById("hao");
+  eventUtil.addEventHander(hao,consHandler,"click")
+  function consHandler(e){
+    var clientPosition={
+      y:"",
+      y1:""
+
+    };
+    var e = eventUtil.getEvent(e);
+    clientPosition.y=e.pageY;
+    clientPosition.y1=e.clientY;
+     console.log(clientPosition)
+  }
+    })(window)
+
+
+</script>
+<html>
